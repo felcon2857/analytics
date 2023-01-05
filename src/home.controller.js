@@ -19,18 +19,18 @@ analytics_app.controller(
     // graph vairable
     $scope.series = ["Age", "Sex", "Status", "Doctors"];
     $scope.options = {
-      legend: { display: true },
-      scales: {
-        xAxis: { grid: { display: false } },
-        yAxis: {
-          grid: { borderDash: [3, 5] },
-          id: "y-axis-1",
-          ticks: {
-            suggestedMin: 10,
-            suggestedMax: 90,
-          },
-        },
-      },
+      // legend: { display: true },
+      // scales: {
+      //   xAxis: { grid: { display: false } },
+      //   yAxis: {
+      //     grid: { borderDash: [3, 5] },
+      //     id: "y-axis-1",
+      //     ticks: {
+      //       suggestedMin: 10,
+      //       suggestedMax: 90,
+      //     },
+      //   },
+      // },
       elements: { arc: { borderWidth: 0 } },
     };
     $scope.datasetOverride = [

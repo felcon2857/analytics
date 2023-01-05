@@ -35,5 +35,6 @@
 <script src="src/app.js"></script>
 <script src="src/factory.js"></script>
 <script src="src/home.controller.js"></script>
+<script src="src/diagram.controller.js"></script>
 
 </html>

@@ -19,7 +19,7 @@ var analytics_app = angular
     IdleProvider.idle(6000);
     IdleProvider.timeout(10);
     KeepaliveProvider.interval(7000);
-    $urlRouterProvider.otherwise("/home");
+    $urlRouterProvider.otherwise("/diagram");
 
     $stateProvider
       // login
@@ -27,5 +27,10 @@ var analytics_app = angular
         url: "/home",
         templateUrl: "templates/home.tpl.php",
         controller: "home_ctrl",
+      })
+      .state("diagram", {
+        url: "/diagram",
+        templateUrl: "templates/diagram.tpl.php",
+        controller: "diagram_ctrl",
       });
   });

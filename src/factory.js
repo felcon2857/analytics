@@ -35,6 +35,17 @@ analytics_app.factory("db_model", [
         serviceBase + "getCountByDoctors&date=" + date + "&doc_id=" + doc_id
       );
     };
+    obj.fac_countPxByDoctor = function (dateFrom, dateTo, doc_id) {
+      return $http.get(
+        serviceBase +
+          "countPxByDoctor&dateFrom=" +
+          dateFrom +
+          "&dateTo=" +
+          dateTo +
+          "&doc_id=" +
+          doc_id
+      );
+    };
 
     // doctor list
     obj.fac_getDoctorList = function () {

@@ -8,7 +8,7 @@ class API extends REST
     const DB_SERVER = "localhost";
     const DB_USER = "root";
     const DB_PASSWORD = "";
-    const DBmobi = "ipadrbg";
+    const DBmobi = "mobi";
 
     public function __construct()
     {
@@ -263,6 +263,55 @@ class API extends REST
         }
         $this->response('', 204);
     }
+    // by doctors2
+    private function countPxByDoctor()
+    {
+        if ($this->get_request_method() != "GET") {
+            $this->response('', 406);
+        }
+        $doc_id = $this->_request["doc_id"];
+        $dateFrom = $this->_request["dateFrom"];
+        $dateTo = $this->_request["dateTo"];
+        // $doc_id = $doc_id  == 0 ? "" : "AND cx.DokPxRID = '$doc_id'";
+
+        $stmt = "SELECT
+                COUNT(cx.ClinixRID) AS clinix_count
+                FROM clinix cx
+                WHERE (cx.AppDateSet BETWEEN '$dateFrom' AND '$dateTo') 
+                AND cx.DokPxRID = '$doc_id';";
+        $qry = $this->mobi->query($stmt) or die($this->mobi->error . __LINE__);
+
+        if ($qry->num_rows > 0) {
+            while ($row = $qry->fetch_assoc()) {
+                $result[] = $row;
+            }
+            $this->response($this->json($result), 200); // send user details
+        }
+        $this->response('', 204);
+    }
+    // by doctors2
+    private function countPx()
+    {
+        if ($this->get_request_method() != "GET") {
+            $this->response('', 406);
+        }
+        $dateFrom = $this->_request["dateFrom"];
+        $dateTo = $this->_request["dateTo"];
+
+        $stmt = "SELECT
+                    COUNT(cx.ClinixRID) AS clinix_count
+                    FROM clinix cx
+                    WHERE (cx.AppDateSet BETWEEN '$dateFrom' AND '$dateTo') ";
+        $qry = $this->mobi->query($stmt) or die($this->mobi->error . __LINE__);
+
+        if ($qry->num_rows > 0) {
+            while ($row = $qry->fetch_assoc()) {
+                $result[] = $row;
+            }
+            $this->response($this->json($result), 200); // send user details
+        }
+        $this->response('', 204);
+    }
 
     // doctor lists
     private function getDoctorList()
@@ -277,7 +326,8 @@ class API extends REST
             u.UserType AS usertype,
             px.LastName AS lastname,
             px.FirstName AS firstname,
-            px.MiddleName AS middlename
+            px.MiddleName AS middlename,
+            CONCAT(px.FirstName, ' ', SUBSTRING(px.MiddleName, 1, 1), px.LastName) AS doc
             FROM users u
             LEFT JOIN px_data px ON px.PxRID = u.PxRID
             WHERE u.UserType = 'DOCTOR' AND u.userTypeRID = 2;";
