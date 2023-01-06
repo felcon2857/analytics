@@ -19,7 +19,7 @@ var analytics_app = angular
     IdleProvider.idle(6000);
     IdleProvider.timeout(10);
     KeepaliveProvider.interval(7000);
-    $urlRouterProvider.otherwise("/diagram");
+    $urlRouterProvider.otherwise("/home");
 
     $stateProvider
       // login

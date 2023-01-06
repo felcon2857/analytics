@@ -8,6 +8,12 @@
                 </a>
             </li>
             <li ui-sref-active="active-menu">
+                <a ui-sref="diagram">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    <span>Doctors Tally</span>
+                </a>
+            </li>
+            <li ui-sref-active="active-menu">
                 <a>
                     <i class="fa-solid fa-dna"></i>
                     <span>Patients Diagnosis</span>

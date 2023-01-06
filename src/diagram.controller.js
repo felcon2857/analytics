@@ -6,7 +6,7 @@ analytics_app.controller(
     $scope.date_from = date;
     $scope.date_to = new Date();
     $scope.data = [0];
-    $scope.labels = ["Number of Patients"];
+    $scope.labels = ["Total Number of Patients"];
 
     localStorage.setItem("labels", JSON.stringify($scope.labels));
 
