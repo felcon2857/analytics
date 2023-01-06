@@ -37,7 +37,7 @@
         <!-- <hr> -->
         <div class="row pt-5">
             <div class="col-lg-12">
-                <h3 class="text-center font-weight-bold text-dark">NUMBER OF PATIENTS ADMITTED</h3>
+                <h3 class="text-center font-weight-bold text-dark">NUMBER OF PATIENTS</h3>
                 <h4 class="text-center text-dark">From {{date_from | date:'MMM dd, yyyy'}} - {{date_to | date:'MMM dd, yyyy'}}</h4>
                 <canvas id="bar" height="100" class="chart chart-bar" chart-colors="colours" chart-options="options" chart-data="data" chart-labels="labels" chart-series="series">
                 </canvas>
