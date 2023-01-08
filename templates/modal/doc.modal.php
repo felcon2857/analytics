@@ -16,7 +16,7 @@
             <tbody>
                 <tr ng-repeat="item in dxObj">
                     <td class="text-left">
-                        <input type="checkbox" ng-model="item.doc" ng-true-value="Y" ng-false-value="N">
+                        <input type="checkbox" ng-model="selectedValues[item.px_id]">
                     </td>
                     <td class="text-left">{{item.doc}}</td>
                 </tr>

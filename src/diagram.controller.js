@@ -36,14 +36,15 @@ analytics_app.controller(
     };
     $scope.getDoctorList();
 
-    $scope.insert_checked = function (dxObj) {
-      var arr = [];
-      for (var i in dxObj) {
-        if (dxObj[i].doc == "Y") {
-          arr.push(dxObj[i].doc);
+    $scope.selectedValues = {};
+    $scope.insert_checked = function () {
+      var labels = [];
+      for (var key in $scope.selectedValues) {
+        if ($scope.selectedValues[key]) {
+          labels.push(key);
         }
+        localStorage.setItem("labels", JSON.stringify(labels));
       }
-      console.log(dxObj[i].doc);
     };
     $scope.showFilterBox = function () {
       var $uibModalInstance = $uibModal.open({
